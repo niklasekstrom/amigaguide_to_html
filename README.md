@@ -1,2 +1,3 @@
-# amigaguide_to_html
-Convert AmigaGuide documents to HTML.
+# AmigaGuide to HTML.
+
+Simple Python program to convert AmigaGuide documents to HTML.
