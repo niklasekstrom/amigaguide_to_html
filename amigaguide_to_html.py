@@ -1,5 +1,5 @@
 import os
-import urllib
+import urllib.parse
 
 def is_ws(c):
     return c == ' ' or c == '\t'
@@ -128,9 +128,9 @@ def node_link(nn):
     i = nn.find('/')
     if i != -1:
         fn = fix_filename(nn[:i])
-        return fn + '#' + urllib.quote_plus(nn[i+1:].lower())
+        return fn + '#' + urllib.parse.quote_plus(nn[i+1:].lower())
     else:
-        return '#' + urllib.quote_plus(nn.lower())
+        return '#' + urllib.parse.quote_plus(nn.lower())
 
 def doc_to_html(doc):
     title = (doc.get('database', []) + ['Unknown database'])[0]
@@ -140,7 +140,7 @@ def doc_to_html(doc):
     output += '</head>\n<body>\n'
 
     for node in doc['nodes']:
-        output += '<div id="' + urllib.quote_plus(node['name'].lower()) + '">\n<hr/>\n'
+        output += '<div id="' + urllib.parse.quote_plus(node['name'].lower()) + '">\n<hr/>\n'
 
         if 'title' in node and len(node['title']) == 1:
             output += '<p><b>' + node['title'][0] + '</b></p>\n'
